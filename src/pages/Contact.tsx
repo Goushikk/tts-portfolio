@@ -1,7 +1,7 @@
 // src/pages/Contact.tsx
-import React from 'react';
+// Removed: import React from 'react'; // No longer needed for JSX
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion'; // Make sure this import is correct
+import { motion } from 'framer-motion';
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock, FaPaperPlane } from 'react-icons/fa';
 
 
@@ -74,7 +74,6 @@ export default function Contact() {
                 <FaEnvelope className="text-secondary-blue mr-3 text-2xl" />
                 <strong className="text-text-dark">Email:</strong> <a href="mailto:technotecsystems@gmail.com" className="text-secondary-blue hover:underline ml-2">technotecsystems@gmail.com</a>
               </p>
-              {/* FIXED: Changed <p> to <div> for address to resolve HTML nesting error */}
               <div className="flex items-start">
                 <FaMapMarkerAlt className="text-secondary-blue mr-3 text-2xl mt-1" />
                 <div>
@@ -85,7 +84,6 @@ export default function Contact() {
                   Tamil Nadu, India
                 </div>
               </div>
-              {/* FIXED: Changed <p> to <div> for business hours to resolve HTML nesting error */}
               <div className="flex items-start">
                 <FaClock className="text-secondary-blue mr-3 text-2xl mt-1" />
                 <div>
@@ -101,7 +99,8 @@ export default function Contact() {
           {/* Contact Form Section */}
           <motion.div variants={itemVariants} className="bg-white p-8 rounded-xl shadow-xl border border-neutral-medium">
             <h2 className="text-3xl font-poppins font-bold text-primary-blue mb-6">Send Us a Message</h2>
-            <form className="space-y-5">
+            {/* Formspree endpoint updated here */}
+            <form action="https://formspree.io/f/xeokjvep" method="POST" className="space-y-5">
               <div>
                 <label htmlFor="name" className="block text-text-dark text-sm font-bold mb-2">
                   Your Name
@@ -109,6 +108,7 @@ export default function Contact() {
                 <input
                   type="text"
                   id="name"
+                  name="name"
                   className="w-full px-4 py-2 border rounded-md focus:ring-primary-blue focus:border-primary-blue"
                   placeholder="Enter your name"
                 />
@@ -120,6 +120,7 @@ export default function Contact() {
                 <input
                   type="email"
                   id="email"
+                  name="_replyto"
                   className="w-full px-4 py-2 border rounded-md focus:ring-primary-blue focus:border-primary-blue"
                   placeholder="Enter your email"
                 />
@@ -130,6 +131,7 @@ export default function Contact() {
                 </label>
                 <textarea
                   id="message"
+                  name="message"
                   rows={4}
                   className="w-full px-4 py-2 border rounded-md focus:ring-primary-blue focus:border-primary-blue"
                   placeholder="Enter your message"
@@ -144,47 +146,43 @@ export default function Contact() {
             </form>
           </motion.div>
         </div>
+      </motion.section>
 
-        {/* Map Section - Now with Iframe */}
-        <motion.section
-          className="w-full py-16 px-8 md:px-12 lg:px-16 bg-primary-blue text-text-light text-center"
-          variants={sectionVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-        >
-          <div className="max-w-6xl mx-auto">
-            <motion.h2 className="text-4xl font-poppins font-bold text-white mb-8" variants={itemVariants}>
-              Find Us on the Map
-            </motion.h2>
-            <motion.div variants={itemVariants} className="relative w-full" style={containerStyle}>
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.1872762027147!2d80.22332317610869!3d13.02374308729646!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a526705bb5cd673%3A0xf3586eeb545b8290!2sTechno%20Tec%20Systems!5e0!3m2!1sen!2sin!4v1748686354360!5m2!1sen!2sin" // Your provided iframe source
-                width="100%"
-                height="100%"
-                style={{ border: 0 }} // Ensure this is a JS object!
-                allowFullScreen={true}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Google Maps Location"
-              ></iframe>
-            </motion.div>
-            <motion.p variants={itemVariants} className="text-sm text-text-light mt-4 font-opensans">
-              Having trouble viewing the map? <a
-                href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.1872762027147!2d80.22332317610869!3d13.02374308729646!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a526705bb5cd673%3A0xf3586eeb545b8290!2sTechno%20Tec%20Systems!5e0!3m2!1sen!2sin!4v1748686354360!5m2!1sen!2sin" // Direct link using your iframe source
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-accent-light hover:underline font-bold"
-              >
-                Get directions on Google Maps directly.
-              </a>
-            </motion.p>
-            <motion.p variants={itemVariants} className="text-sm text-red-300 mt-2 font-opensans">
-              Please note: The map display might be affected if the source of the iframe changes or due to external factors with the embedded content.
-            </motion.p>
-          </div>
-        </motion.section>
-
+      {/* Map Section - Now with Iframe */}
+      <motion.section
+        className="w-full py-16 px-8 md:px-12 lg:px-16 bg-primary-blue text-text-light text-center mt-16"
+        variants={sectionVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        <div className="max-w-6xl mx-auto">
+          <motion.h2 className="text-4xl font-poppins font-bold text-white mb-8" variants={itemVariants}>
+            Find Us on the Map
+          </motion.h2>
+          <motion.div variants={itemVariants} className="relative w-full" style={containerStyle}>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.1872762027147!2d80.22332317610869!3d13.02374308729646!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a526705bb5cd673%3A0xf3586eeb545b8290!2sTechno%20Tec%20Systems!5e0!3m2!1sen!2sin!4v1748686354360!5m2!1sen!2sin"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen={true}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Google Maps Location"
+            ></iframe>
+          </motion.div>
+          <motion.p variants={itemVariants} className="text-sm text-text-light mt-4 font-opensans">
+            Having trouble viewing the map? <a
+              href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.1872762027147!2d80.22332317610869!3d13.02374308729646!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a526705bb5cd673%3A0xf3586eeb545b8290!2sTechno%20Tec%20Systems!5e0!3m2!1sen!2sin!4v1748686354360!5m2!1sen!2sin"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-accent-light hover:underline font-bold"
+            >
+              Get directions on Google Maps directly.
+            </a>
+          </motion.p>
+        </div>
       </motion.section>
 
       {/* Call to Action Section - Consistent with other pages */}
@@ -195,14 +193,13 @@ export default function Contact() {
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
       >
-              {/* FIXED: Changed to use MotionLink to resolve TypeScript error */}
-      <MotionLink
-        to="/services"
-        className="inline-block bg-primary-blue text-text-light py-3 px-8 rounded-md hover:bg-secondary-blue transition duration-300 font-opensans"
-        variants={itemVariants}
-      >
-        Explore Our Services
-      </MotionLink>
+        <MotionLink
+          to="/services"
+          className="inline-block bg-primary-blue text-white py-3 px-8 rounded-md hover:bg-secondary-blue transition duration-300 font-opensans"
+          variants={itemVariants}
+        >
+          Explore Our Services
+        </MotionLink>
       </motion.div>
     </div>
   );
