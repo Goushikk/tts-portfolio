@@ -126,7 +126,7 @@ export default function Projects() {
             <FaPlaceOfWorship className="inline-block text-5xl mb-2 mr-3 align-middle" /> Temples Across India
           </motion.h2>
           <motion.p className="text-xl font-opensans opacity-90 mb-8" variants={itemVariants}>
-            Proudly securing **more than 1000+ Temples** across India. Some of our key installations include:
+            Proudly securing more than 1000+ Temples across India. Some of our key installations include:
           </motion.p>
           <motion.div
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 bg-primary-blue/70 p-6 rounded-xl shadow-xl border border-accent-light"
