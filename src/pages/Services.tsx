@@ -1,7 +1,8 @@
 // src/pages/Services.tsx
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { FaShieldAlt, FaCctv, FaFireAlt, FaDoorOpen, FaLightbulb, FaHeadset, FaTools, FaCheckCircle, FaLaptopHouse, FaMapMarkedAlt } from 'react-icons/fa';
+// Changed FaCctv to FaCamera in the import list
+import { FaShieldAlt, FaCamera, FaFireAlt, FaDoorOpen, FaFingerprint, FaVideo, FaLightbulb, FaHeadset, FaTools, FaCheckCircle, FaLaptopHouse, FaMapMarkedAlt } from 'react-icons/fa';
 
 export default function Services() {
   const sectionVariants = {
@@ -60,7 +61,7 @@ export default function Services() {
             Integrated Security for Every Environment
           </motion.h2>
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
@@ -72,42 +73,105 @@ export default function Services() {
             <motion.div variants={serviceCardVariants} className="p-6 bg-white rounded-xl shadow-lg border border-neutral-medium hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col items-center text-center">
               <FaShieldAlt className="text-primary-blue text-6xl mb-4" />
               <h3 className="text-xl font-poppins font-semibold text-primary-blue mb-2">Burglar Alarm Systems</h3>
-              <p className="text-sm text-text-dark">
+              <p className="text-sm text-text-dark mb-4">
                 Certified protection trusted by homes and businesses. Our advanced alarm systems provide immediate alerts and deterrence against unauthorized intrusions, ensuring peace of mind.
               </p>
+              <h4 className="text-md font-semibold text-text-dark mb-2">Key Brands:</h4>
+              <div className="flex flex-wrap justify-center gap-2 text-sm text-text-dark">
+                <span className="bg-gray-100 px-3 py-1 rounded-full border border-gray-300">DSC</span>
+                <span className="bg-gray-100 px-3 py-1 rounded-full border border-gray-300">Honeywell</span>
+                <span className="bg-gray-100 px-3 py-1 rounded-full border border-gray-300">Texecom</span>
+              </div>
             </motion.div>
 
             {/* Service Card 2: CCTV Camera Systems */}
             <motion.div variants={serviceCardVariants} className="p-6 bg-white rounded-xl shadow-lg border border-neutral-medium hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col items-center text-center">
-              <FaCctv className="text-primary-blue text-6xl mb-4" />
+              <FaCamera className="text-primary-blue text-6xl mb-4" /> {/* Changed to FaCamera */}
               <h3 className="text-xl font-poppins font-semibold text-primary-blue mb-2">CCTV Camera Systems</h3>
-              <p className="text-sm text-text-dark">
+              <p className="text-sm text-text-dark mb-4">
                 Advanced surveillance with smart analytics and remote access. Monitor your premises 24/7 with high-definition cameras, motion detection, and cloud storage options.
               </p>
+              <h4 className="text-md font-semibold text-text-dark mb-2">Key Brands:</h4>
+              <div className="flex flex-wrap justify-center gap-2 text-sm text-text-dark">
+                <span className="bg-gray-100 px-3 py-1 rounded-full border border-gray-300">Honeywell</span>
+                <span className="bg-gray-100 px-3 py-1 rounded-full border border-gray-300">Dahua</span>
+                <span className="bg-gray-100 px-3 py-1 rounded-full border border-gray-300">Hikvision</span>
+                <span className="bg-gray-100 px-3 py-1 rounded-full border border-gray-300">Samsung</span>
+                <span className="bg-gray-100 px-3 py-1 rounded-full border border-gray-300">Sony CCTV</span>
+                <span className="bg-gray-100 px-3 py-1 rounded-full border border-gray-300">Axis Communications</span>
+                <span className="bg-gray-100 px-3 py-1 rounded-full border border-gray-300">UNV</span>
+              </div>
             </motion.div>
 
             {/* Service Card 3: Fire Alarm Systems */}
             <motion.div variants={serviceCardVariants} className="p-6 bg-white rounded-xl shadow-lg border border-neutral-medium hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col items-center text-center">
               <FaFireAlt className="text-primary-blue text-6xl mb-4" />
               <h3 className="text-xl font-poppins font-semibold text-primary-blue mb-2">Fire Alarm Systems</h3>
-              <p className="text-sm text-text-dark">
+              <p className="text-sm text-text-dark mb-4">
                 Early detection systems for safety and regulatory compliance. Protect your property and personnel from fire hazards with interconnected smoke, heat, and flame detectors.
               </p>
+              <h4 className="text-md font-semibold text-text-dark mb-2">Key Brands:</h4>
+              <div className="flex flex-wrap justify-center gap-2 text-sm text-text-dark">
+                <span className="bg-gray-100 px-3 py-1 rounded-full border border-gray-300">System Sensor</span>
+                <span className="bg-gray-100 px-3 py-1 rounded-full border border-gray-300">Ravel</span>
+                <span className="bg-gray-100 px-3 py-1 rounded-full border border-gray-300">GST</span>
+                <span className="bg-gray-100 px-3 py-1 rounded-full border border-gray-300">Apollo</span>
+                <span className="bg-gray-100 px-3 py-1 rounded-full border border-gray-300">Honeywell (Morley IAS)</span>
+              </div>
             </motion.div>
 
-            {/* Service Card 4: Access Control Systems */}
+            {/* Service Card 4: Access Control & Interlocking Systems */}
             <motion.div variants={serviceCardVariants} className="p-6 bg-white rounded-xl shadow-lg border border-neutral-medium hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col items-center text-center">
               <FaDoorOpen className="text-primary-blue text-6xl mb-4" />
-              <h3 className="text-xl font-poppins font-semibold text-primary-blue mb-2">Access Control Systems</h3>
-              <p className="text-sm text-text-dark">
+              <h3 className="text-xl font-poppins font-semibold text-primary-blue mb-2">Access Control & Interlocking Systems</h3>
+              <p className="text-sm text-text-dark mb-4">
                 Secure entry management for sensitive areas. Control who enters and exits your premises with biometric scanners, card readers, and robust software solutions.
               </p>
+              <h4 className="text-md font-semibold text-text-dark mb-2">Key Brands:</h4>
+              <div className="flex flex-wrap justify-center gap-2 text-sm text-text-dark">
+                <span className="bg-gray-100 px-3 py-1 rounded-full border border-gray-300">Honeywell Integrated Security</span>
+                <span className="bg-gray-100 px-3 py-1 rounded-full border border-gray-300">Spectra</span>
+                <span className="bg-gray-100 px-3 py-1 rounded-full border border-gray-300">HID</span>
+                <span className="bg-gray-100 px-3 py-1 rounded-full border border-gray-300">eSSL</span>
+                <span className="bg-gray-100 px-3 py-1 rounded-full border border-gray-300">BioMax</span>
+              </div>
+            </motion.div>
+
+            {/* New Service Card 5: Time and Attendance Recorders */}
+            <motion.div variants={serviceCardVariants} className="p-6 bg-white rounded-xl shadow-lg border border-neutral-medium hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col items-center text-center">
+              <FaFingerprint className="text-primary-blue text-6xl mb-4" />
+              <h3 className="text-xl font-poppins font-semibold text-primary-blue mb-2">Time and Attendance Recorders</h3>
+              <p className="text-sm text-text-dark mb-4">
+                Efficient biometric and card-based solutions for accurate employee time management and productivity.
+              </p>
+              <h4 className="text-md font-semibold text-text-dark mb-2">Key Brands:</h4>
+              <div className="flex flex-wrap justify-center gap-2 text-sm text-text-dark">
+                <span className="bg-gray-100 px-3 py-1 rounded-full border border-gray-300">eSSL</span>
+                <span className="bg-gray-100 px-3 py-1 rounded-full border border-gray-300">BioMax</span>
+                <span className="bg-gray-100 px-3 py-1 rounded-full border border-gray-300">Spectra</span>
+              </div>
+            </motion.div>
+
+            {/* New Service Card 6: Video Door Phones */}
+            <motion.div variants={serviceCardVariants} className="p-6 bg-white rounded-xl shadow-lg border border-neutral-medium hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col items-center text-center">
+              <FaVideo className="text-primary-blue text-6xl mb-4" />
+              <h3 className="text-xl font-poppins font-semibold text-primary-blue mb-2">Video Door Phones</h3>
+              <p className="text-sm text-text-dark mb-4">
+                Enhanced home or office security with visual verification and two-way communication at your entrance.
+              </p>
+              <h4 className="text-md font-semibold text-text-dark mb-2">Key Brands:</h4>
+              <div className="flex flex-wrap justify-center gap-2 text-sm text-text-dark">
+                {/* Brands for Video Door Phones not explicitly shown in image_d01db8.png, using common security brands */}
+                <span className="bg-gray-100 px-3 py-1 rounded-full border border-gray-300">Hikvision</span>
+                <span className="bg-gray-100 px-3 py-1 rounded-full border border-gray-300">Dahua</span>
+                <span className="bg-gray-100 px-3 py-1 rounded-full border border-gray-300">Godrej</span>
+              </div>
             </motion.div>
           </motion.div>
         </div>
       </motion.section>
 
-      {/* Our Process Section */}
+      {/* Our Process Section (Remains the same) */}
       <motion.section
         className="w-full py-16 px-8 md:px-12 lg:px-16 bg-primary-blue text-text-light text-center"
         variants={sectionVariants}
@@ -145,7 +209,7 @@ export default function Services() {
         </div>
       </motion.section>
 
-      {/* Why Choose Us for Services Section */}
+      {/* Why Choose Us for Services Section (Remains the same) */}
       <motion.section
         className="w-full py-16 px-8 md:px-12 lg:px-16 bg-neutral-light text-center"
         variants={sectionVariants}
@@ -178,7 +242,7 @@ export default function Services() {
       </motion.section>
 
 
-      {/* Call to Action Section */}
+      {/* Call to Action Section (Remains the same) */}
       <motion.section
         className="w-full py-16 px-8 md:px-12 lg:px-16 bg-secondary-blue text-center"
         variants={sectionVariants}
