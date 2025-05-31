@@ -1,5 +1,4 @@
-// src/pages/Contact.tsx
-import React from 'react';
+
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion'; // Make sure this import is correct
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock, FaPaperPlane } from 'react-icons/fa';
