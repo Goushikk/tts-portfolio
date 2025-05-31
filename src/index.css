@@ -1,0 +1,29 @@
+/* src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-100%); }
+}
+
+.marquee-container {
+  overflow: hidden; /* Hides content outside the container */
+  position: relative;
+  width: 100%;
+}
+
+.marquee-content {
+  display: flex;
+  white-space: nowrap; /* Prevents logos from wrapping to the next line */
+  animation: marquee 30s linear infinite; /* Adjust duration (30s) as needed for speed */
+  will-change: transform; /* Helps with performance */
+  gap: 2rem; /* Spacing between logos */
+}
+
+/* Pause animation on hover */
+.marquee-content:hover {
+  animation-play-state: paused;
+}
