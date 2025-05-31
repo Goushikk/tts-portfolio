@@ -1,7 +1,6 @@
 // src/pages/Services.tsx
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-// Changed FaCctv to FaCamera in the import list
 import { FaShieldAlt, FaCamera, FaFireAlt, FaDoorOpen, FaFingerprint, FaVideo, FaLightbulb, FaHeadset, FaTools, FaCheckCircle, FaLaptopHouse, FaMapMarkedAlt } from 'react-icons/fa';
 
 export default function Services() {
@@ -50,18 +49,18 @@ export default function Services() {
 
       {/* Our Core Services Section */}
       <motion.section
-        className="w-full py-16 px-8 md:px-12 lg:px-16 bg-neutral-light text-center"
+        className="w-full py-16 px-4 sm:px-8 md:px-12 lg:px-16 bg-neutral-light text-center"
         variants={sectionVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
       >
         <div className="max-w-6xl mx-auto">
-          <motion.h2 className="text-4xl font-poppins font-bold text-secondary-blue mb-10" variants={itemVariants}>
+          <motion.h2 className="text-2xl sm:text-3xl md:text-4xl font-poppins font-bold text-secondary-blue mb-10" variants={itemVariants}>
             Integrated Security for Every Environment
           </motion.h2>
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
@@ -86,7 +85,7 @@ export default function Services() {
 
             {/* Service Card 2: CCTV Camera Systems */}
             <motion.div variants={serviceCardVariants} className="p-6 bg-white rounded-xl shadow-lg border border-neutral-medium hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col items-center text-center">
-              <FaCamera className="text-primary-blue text-6xl mb-4" /> {/* Changed to FaCamera */}
+              <FaCamera className="text-primary-blue text-6xl mb-4" />
               <h3 className="text-xl font-poppins font-semibold text-primary-blue mb-2">CCTV Camera Systems</h3>
               <p className="text-sm text-text-dark mb-4">
                 Advanced surveillance with smart analytics and remote access. Monitor your premises 24/7 with high-definition cameras, motion detection, and cloud storage options.
@@ -161,7 +160,6 @@ export default function Services() {
               </p>
               <h4 className="text-md font-semibold text-text-dark mb-2">Key Brands:</h4>
               <div className="flex flex-wrap justify-center gap-2 text-sm text-text-dark">
-                {/* Brands for Video Door Phones not explicitly shown in image_d01db8.png, using common security brands */}
                 <span className="bg-gray-100 px-3 py-1 rounded-full border border-gray-300">Hikvision</span>
                 <span className="bg-gray-100 px-3 py-1 rounded-full border border-gray-300">Dahua</span>
                 <span className="bg-gray-100 px-3 py-1 rounded-full border border-gray-300">Godrej</span>
@@ -171,19 +169,19 @@ export default function Services() {
         </div>
       </motion.section>
 
-      {/* Our Process Section (Remains the same) */}
+      {/* Our Process Section */}
       <motion.section
-        className="w-full py-16 px-8 md:px-12 lg:px-16 bg-primary-blue text-text-light text-center"
+        className="w-full py-16 px-4 sm:px-8 md:px-12 lg:px-16 bg-primary-blue text-text-light text-center"
         variants={sectionVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
       >
         <div className="max-w-6xl mx-auto">
-          <motion.h2 className="text-4xl font-poppins font-bold mb-10 text-white" variants={itemVariants}>
+          <motion.h2 className="text-2xl sm:text-3xl md:text-4xl font-poppins font-bold mb-10 text-white" variants={itemVariants}>
             Our Seamless Service Process
           </motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-10">
             <motion.div variants={processStepVariants} className="flex flex-col items-center text-center p-6 bg-primary-blue/70 rounded-xl shadow-xl border border-accent-light">
               <FaLightbulb className="text-accent-light text-5xl mb-4" />
               <h3 className="text-xl font-poppins font-semibold mb-3 text-white">1. Consultation & Assessment</h3>
@@ -209,19 +207,19 @@ export default function Services() {
         </div>
       </motion.section>
 
-      {/* Why Choose Us for Services Section (Remains the same) */}
+      {/* Why Choose Us for Services Section */}
       <motion.section
-        className="w-full py-16 px-8 md:px-12 lg:px-16 bg-neutral-light text-center"
+        className="w-full py-16 px-4 sm:px-8 md:px-12 lg:px-16 bg-neutral-light text-center"
         variants={sectionVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
       >
         <div className="max-w-6xl mx-auto">
-          <motion.h2 className="text-4xl font-poppins font-bold text-secondary-blue mb-10" variants={itemVariants}>
+          <motion.h2 className="text-2xl sm:text-3xl md:text-4xl font-poppins font-bold text-secondary-blue mb-10" variants={itemVariants}>
             Why Choose Techno Tec for Your Security Needs?
           </motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-8">
             <motion.div variants={itemVariants} className="p-6 bg-white rounded-xl shadow-lg border border-neutral-medium hover:shadow-xl transition-all duration-300">
               <FaLaptopHouse className="text-primary-blue text-5xl mb-4 mx-auto" />
               <h3 className="text-xl font-poppins font-semibold text-primary-blue mb-2">Unmatched Expertise</h3>
@@ -241,10 +239,9 @@ export default function Services() {
         </div>
       </motion.section>
 
-
-      {/* Call to Action Section (Remains the same) */}
+      {/* Call to Action Section */}
       <motion.section
-        className="w-full py-16 px-8 md:px-12 lg:px-16 bg-secondary-blue text-center"
+        className="w-full py-16 px-4 sm:px-8 md:px-12 lg:px-16 bg-secondary-blue text-center"
         variants={sectionVariants}
         initial="hidden"
         whileInView="visible"
@@ -252,7 +249,7 @@ export default function Services() {
       >
         <div className="max-w-3xl mx-auto">
           <motion.h2
-            className="text-4xl font-poppins font-bold text-white mb-6"
+            className="text-2xl sm:text-3xl md:text-4xl font-poppins font-bold text-white mb-6"
             variants={itemVariants}
           >
             Ready for Advanced Security?
