@@ -1,100 +1,214 @@
-
-
-const services = [
-  {
-    name: 'Burglar Alarm Systems',
-    description: 'Robust and highly reliable protection for homes and businesses. Certified to IS2189:1999 standard by ET & DC, Govt. of India.',
-    brands: ['DSC', 'Honeywell', 'Texecom'], // Based on brands list for security
-  },
-  {
-    name: 'CCTV Camera Systems',
-    description: 'Advanced surveillance solutions including IP, HD Analog, and smart analytics with remote monitoring capabilities.',
-    brands: ['Honeywell', 'Dahua', 'Hikvision', 'Samsung', 'Sony CCTV', 'Axis Communications', 'UNV'], // Based on brands list
-  },
-  {
-    name: 'Fire Alarm Systems',
-    description: 'Early detection and warning systems crucial for safety and compliance in all types of premises.',
-    brands: ['System Sensor', 'Ravel', 'GST', 'Apollo', 'Honeywell (Morley IAS)'], // Based on brands list
-  },
-  {
-    name: 'Access Control & Interlocking Systems',
-    description: 'Secure entry management, restricting access to sensitive areas and enhancing overall security.',
-    brands: ['Honeywell Integrated Security', 'Spectra', 'HID', 'eSSL', 'BioMax'], // Based on brands list
-  },
-  {
-    name: 'Time and Attendance Recorders',
-    description: 'Efficient biometric and card-based solutions for accurate employee time management and productivity.',
-    brands: ['eSSL', 'BioMax', 'Spectra'], // Common brands for access control often cover T&A
-  },
-  {
-    name: 'Video Door Phones',
-    description: 'Enhanced home or office security with visual verification and two-way communication at your entrance.',
-    brands: [], // No specific brands listed
-  },
-  {
-    name: 'Fire Fighting Systems',
-    description: 'Integrated solutions for active fire suppression, including sprinklers, hydrants, and gas-based systems.',
-    brands: [], // No specific brands listed
-  },
-  {
-    name: 'Public Address (PA) Systems',
-    description: 'Effective and clear communication systems for large spaces, auditoriums, and emergency announcements.',
-    brands: ['JBL', 'Heinrich', 'Bosch', 'Yamaha', 'Ahuja'], // Based on brands list
-  },
-  {
-    name: 'Networking Systems',
-    description: 'Reliable and high-performance network infrastructure to support all integrated security and automation solutions.',
-    brands: ['Cisco', 'Netgear', 'Commscope', 'D-Link', 'Netrack', 'Tenda', 'UTEPO'], // Based on brands list
-  },
-  {
-    name: 'UPS / Inverter',
-    description: 'Uninterrupted power supply solutions to ensure continuous operation of critical security systems during power outages.',
-    brands: [], // No specific brands listed
-  },
-  {
-    name: 'GPS',
-    description: 'Advanced GPS tracking solutions for asset management and vehicle monitoring.',
-    brands: [], // No specific brands listed
-  },
-  {
-    name: 'HD TV Solutions & Video Wall',
-    description: 'High-definition display solutions for surveillance monitoring centers and command rooms, ensuring clear visuals.',
-    brands: ['Sony', 'HP', 'Dell', 'Samsung Display', 'LG Display', 'BenQ'], // Based on brands list
-  },
-];
+// src/pages/Services.tsx
+import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { FaShieldAlt, FaCctv, FaFireAlt, FaDoorOpen, FaLightbulb, FaHeadset, FaTools, FaCheckCircle, FaLaptopHouse, FaMapMarkedAlt } from 'react-icons/fa';
 
 export default function Services() {
-  return (
-    <div className="container mx-auto p-8 py-12">
-      <h1 className="text-5xl font-extrabold text-blue-800 mb-6 text-center">
-        Our Comprehensive Security & Automation Solutions
-      </h1>
-      <p className="text-xl text-gray-700 mb-12 text-center max-w-3xl mx-auto">
-        Techno Tec Systems offers a wide array of advanced security and automation products and services,
-        tailored to meet the diverse needs of residential, commercial, industrial, and government clients.
-        Our solutions ensure safety, efficiency, and peace of mind.
-      </p>
+  const sectionVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+  };
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {services.map((service, index) => (
-          <div key={index} className="bg-white p-6 rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300">
-            <h2 className="text-2xl font-bold text-indigo-700 mb-3">{service.name}</h2>
-            <p className="text-gray-700 mb-4">{service.description}</p>
-            {service.brands.length > 0 && (
-              <div>
-                <p className="font-semibold text-gray-800 mb-2">Key Brands:</p>
-                <div className="flex flex-wrap gap-2">
-                  {service.brands.map((brand, bIndex) => (
-                    <span key={bIndex} className="bg-gray-100 text-gray-700 text-sm px-3 py-1 rounded-full border border-gray-200">
-                      {brand}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            )}
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+  };
+
+  const serviceCardVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: "easeOut" } }
+  };
+
+  const processStepVariants = {
+    hidden: { opacity: 0, x: -50 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } }
+  };
+
+  return (
+    <div className="flex flex-col items-center bg-neutral-light text-text-dark min-h-[calc(100vh-120px)]">
+
+      {/* Hero Section */}
+      <motion.section
+        className="w-full py-12 md:py-16 bg-gradient-to-r from-primary-blue to-secondary-blue text-text-light text-center shadow-lg"
+        initial="hidden"
+        animate="visible"
+        variants={sectionVariants}
+      >
+        <div className="max-w-4xl mx-auto px-8 md:px-12">
+          <motion.h1 className="text-4xl md:text-5xl font-poppins font-bold leading-tight mb-4 text-white" variants={itemVariants}>
+            Our Comprehensive Security Solutions
+          </motion.h1>
+          <motion.p className="text-xl md:text-2xl font-opensans opacity-90 mb-4" variants={itemVariants}>
+            Protecting What Matters Most with Advanced Technology
+          </motion.p>
+          <motion.p className="text-md md:text-lg font-opensans opacity-80" variants={itemVariants}>
+            From proactive alarms to intelligent surveillance, we offer a full spectrum of security services tailored to your needs.
+          </motion.p>
+        </div>
+      </motion.section>
+
+      {/* Our Core Services Section */}
+      <motion.section
+        className="w-full py-16 px-8 md:px-12 lg:px-16 bg-neutral-light text-center"
+        variants={sectionVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        <div className="max-w-6xl mx-auto">
+          <motion.h2 className="text-4xl font-poppins font-bold text-secondary-blue mb-10" variants={itemVariants}>
+            Integrated Security for Every Environment
+          </motion.h2>
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={{
+              visible: { transition: { staggerChildren: 0.15 } }
+            }}
+          >
+            {/* Service Card 1: Burglar Alarm Systems */}
+            <motion.div variants={serviceCardVariants} className="p-6 bg-white rounded-xl shadow-lg border border-neutral-medium hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col items-center text-center">
+              <FaShieldAlt className="text-primary-blue text-6xl mb-4" />
+              <h3 className="text-xl font-poppins font-semibold text-primary-blue mb-2">Burglar Alarm Systems</h3>
+              <p className="text-sm text-text-dark">
+                Certified protection trusted by homes and businesses. Our advanced alarm systems provide immediate alerts and deterrence against unauthorized intrusions, ensuring peace of mind.
+              </p>
+            </motion.div>
+
+            {/* Service Card 2: CCTV Camera Systems */}
+            <motion.div variants={serviceCardVariants} className="p-6 bg-white rounded-xl shadow-lg border border-neutral-medium hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col items-center text-center">
+              <FaCctv className="text-primary-blue text-6xl mb-4" />
+              <h3 className="text-xl font-poppins font-semibold text-primary-blue mb-2">CCTV Camera Systems</h3>
+              <p className="text-sm text-text-dark">
+                Advanced surveillance with smart analytics and remote access. Monitor your premises 24/7 with high-definition cameras, motion detection, and cloud storage options.
+              </p>
+            </motion.div>
+
+            {/* Service Card 3: Fire Alarm Systems */}
+            <motion.div variants={serviceCardVariants} className="p-6 bg-white rounded-xl shadow-lg border border-neutral-medium hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col items-center text-center">
+              <FaFireAlt className="text-primary-blue text-6xl mb-4" />
+              <h3 className="text-xl font-poppins font-semibold text-primary-blue mb-2">Fire Alarm Systems</h3>
+              <p className="text-sm text-text-dark">
+                Early detection systems for safety and regulatory compliance. Protect your property and personnel from fire hazards with interconnected smoke, heat, and flame detectors.
+              </p>
+            </motion.div>
+
+            {/* Service Card 4: Access Control Systems */}
+            <motion.div variants={serviceCardVariants} className="p-6 bg-white rounded-xl shadow-lg border border-neutral-medium hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col items-center text-center">
+              <FaDoorOpen className="text-primary-blue text-6xl mb-4" />
+              <h3 className="text-xl font-poppins font-semibold text-primary-blue mb-2">Access Control Systems</h3>
+              <p className="text-sm text-text-dark">
+                Secure entry management for sensitive areas. Control who enters and exits your premises with biometric scanners, card readers, and robust software solutions.
+              </p>
+            </motion.div>
+          </motion.div>
+        </div>
+      </motion.section>
+
+      {/* Our Process Section */}
+      <motion.section
+        className="w-full py-16 px-8 md:px-12 lg:px-16 bg-primary-blue text-text-light text-center"
+        variants={sectionVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        <div className="max-w-6xl mx-auto">
+          <motion.h2 className="text-4xl font-poppins font-bold mb-10 text-white" variants={itemVariants}>
+            Our Seamless Service Process
+          </motion.h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+            <motion.div variants={processStepVariants} className="flex flex-col items-center text-center p-6 bg-primary-blue/70 rounded-xl shadow-xl border border-accent-light">
+              <FaLightbulb className="text-accent-light text-5xl mb-4" />
+              <h3 className="text-xl font-poppins font-semibold mb-3 text-white">1. Consultation & Assessment</h3>
+              <p className="text-lg opacity-90">
+                We begin with a thorough understanding of your security needs and conduct a site assessment to identify vulnerabilities.
+              </p>
+            </motion.div>
+            <motion.div variants={processStepVariants} className="flex flex-col items-center text-center p-6 bg-primary-blue/70 rounded-xl shadow-xl border border-accent-light">
+              <FaTools className="text-accent-light text-5xl mb-4" />
+              <h3 className="text-xl font-poppins font-semibold mb-3 text-white">2. Tailored Solution Design</h3>
+              <p className="text-lg opacity-90">
+                Based on the assessment, we design a customized, scalable, and cost-effective security solution using cutting-edge technology.
+              </p>
+            </motion.div>
+            <motion.div variants={processStepVariants} className="flex flex-col items-center text-center p-6 bg-primary-blue/70 rounded-xl shadow-xl border border-accent-light">
+              <FaCheckCircle className="text-accent-light text-5xl mb-4" />
+              <h3 className="text-xl font-poppins font-semibold mb-3 text-white">3. Professional Installation & Support</h3>
+              <p className="text-lg opacity-90">
+                Our certified technicians ensure seamless installation, followed by comprehensive training and ongoing support.
+              </p>
+            </motion.div>
           </div>
-        ))}
-      </div>
+        </div>
+      </motion.section>
+
+      {/* Why Choose Us for Services Section */}
+      <motion.section
+        className="w-full py-16 px-8 md:px-12 lg:px-16 bg-neutral-light text-center"
+        variants={sectionVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        <div className="max-w-6xl mx-auto">
+          <motion.h2 className="text-4xl font-poppins font-bold text-secondary-blue mb-10" variants={itemVariants}>
+            Why Choose Techno Tec for Your Security Needs?
+          </motion.h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <motion.div variants={itemVariants} className="p-6 bg-white rounded-xl shadow-lg border border-neutral-medium hover:shadow-xl transition-all duration-300">
+              <FaLaptopHouse className="text-primary-blue text-5xl mb-4 mx-auto" />
+              <h3 className="text-xl font-poppins font-semibold text-primary-blue mb-2">Unmatched Expertise</h3>
+              <p className="text-sm">Over two decades of experience securing diverse environments from homes to government facilities.</p>
+            </motion.div>
+            <motion.div variants={itemVariants} className="p-6 bg-white rounded-xl shadow-lg border border-neutral-medium hover:shadow-xl transition-all duration-300">
+              <FaHeadset className="text-primary-blue text-5xl mb-4 mx-auto" />
+              <h3 className="text-xl font-poppins font-semibold text-primary-blue mb-2">Dedicated Support</h3>
+              <p className="text-sm">Comprehensive after-sales support ensures your systems operate flawlessly 24/7.</p>
+            </motion.div>
+            <motion.div variants={itemVariants} className="p-6 bg-white rounded-xl shadow-lg border border-neutral-medium hover:shadow-xl transition-all duration-300">
+              <FaMapMarkedAlt className="text-primary-blue text-5xl mb-4 mx-auto" />
+              <h3 className="text-xl font-poppins font-semibold text-primary-blue mb-2">Customized Solutions</h3>
+              <p className="text-sm">Solutions designed specifically for your unique security challenges and budget.</p>
+            </motion.div>
+          </div>
+        </div>
+      </motion.section>
+
+
+      {/* Call to Action Section */}
+      <motion.section
+        className="w-full py-16 px-8 md:px-12 lg:px-16 bg-secondary-blue text-center"
+        variants={sectionVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        <div className="max-w-3xl mx-auto">
+          <motion.h2
+            className="text-4xl font-poppins font-bold text-white mb-6"
+            variants={itemVariants}
+          >
+            Ready for Advanced Security?
+          </motion.h2>
+          <motion.p
+            className="text-xl text-text-light mb-8"
+            variants={itemVariants}
+          >
+            Contact us today for a free consultation and let us tailor a security solution that protects what matters most.
+          </motion.p>
+          <motion.div variants={itemVariants}>
+            <Link
+              to="/contact"
+              className="bg-accent-light hover:bg-accent-dark text-primary-blue text-xl font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-105 inline-block"
+            >
+              Get a Free Quote
+            </Link>
+          </motion.div>
+        </div>
+      </motion.section>
     </div>
   );
 }
