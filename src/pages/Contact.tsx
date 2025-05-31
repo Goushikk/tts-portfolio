@@ -1,165 +1,209 @@
+// src/pages/Contact.tsx
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion'; // Make sure this import is correct
+import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock, FaPaperPlane } from 'react-icons/fa';
 
-import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 
-// --- Map Configuration ---
+// --- Map Container Styling ---
 const containerStyle = {
   width: '100%',
-  height: '400px'
+  height: '450px', // Matches iframe height
+  borderRadius: '0.75rem', // Tailwind's rounded-xl
+  overflow: 'hidden',
+  boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)', // Tailwind's shadow-xl
 };
 
-// Approximate coordinates for Seshachalam Street, Saidapet, Chennai 600015
-const center = {
-  lat: 13.0333, // Latitude for Saidapet, Chennai
-  lng: 80.2222  // Longitude for Saidapet, Chennai
-};
-
-const mapOptions = {
-  zoomControl: true,
-  mapTypeControl: false,
-  scaleControl: false,
-  streetViewControl: false,
-  rotateControl: false,
-  fullscreenControl: true,
-};
 
 export default function Contact() {
-  // --- IMPORTANT: Replace 'YOUR_Maps_API_KEY' with your actual API key ---
-  const { isLoaded, loadError } = useJsApiLoader({
-    googleMapsApiKey: 'YOUR_Maps_API_KEY', // <--- YOU MUST REPLACE THIS!
-    id: 'google-map-script',
-    // libraries: ['places'], // Uncomment if you need places autocomplete or other features
-  });
-
-  const renderMap = () => {
-    if (loadError) {
-      return (
-        <div className="bg-red-100 text-red-800 p-4 rounded-lg h-full flex items-center justify-center">
-          Error loading map: {loadError.message}. Please ensure your API key is correct and that the "Maps JavaScript API" is enabled for your project in Google Cloud Console.
-        </div>
-      );
-    }
-    if (!isLoaded) {
-      return (
-        <div className="bg-gray-100 text-gray-700 p-4 rounded-lg h-full flex items-center justify-center">
-          Loading Map...
-        </div>
-      );
-    }
-
-    return (
-      <GoogleMap
-        mapContainerStyle={containerStyle}
-        center={center}
-        zoom={16} // Zoom level (e.g., 10 for city, 16-18 for street level)
-        options={mapOptions}
-      >
-        {/* You can add a Marker for your office location here if desired */}
-        {/* <Marker position={center} /> */}
-      </GoogleMap>
-    );
+  // Framer Motion Variants for consistent animations
+  const sectionVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
   };
 
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+  };
+
+  // Define a MotionLink component by wrapping Link with motion
+  const MotionLink = motion(Link);
+
   return (
-    <div className="container mx-auto p-8 py-12">
-      <h1 className="text-5xl font-extrabold text-blue-800 mb-6 text-center">
-        Get in Touch with Techno Tec Systems
-      </h1>
-      <p className="text-xl text-gray-700 mb-12 text-center max-w-3xl mx-auto">
-        Have a security need, a question about our services, or need a personalized quote?
-        We're here to help. Reach out to our experts for reliable solutions.
-      </p>
+    <div className="flex flex-col items-center bg-neutral-light text-text-dark min-h-[calc(100vh-120px)]">
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-        {/* Contact Information Section */}
-        <div className="bg-white p-8 rounded-lg shadow-xl">
-          <h2 className="text-3xl font-bold text-indigo-700 mb-6">Contact Information</h2>
-          <div className="space-y-4 text-lg text-gray-700">
-            <p>
-              <strong className="text-gray-900">Phone:</strong> <a href="tel:+9124336941" className="text-blue-600 hover:underline">+91 24336941</a>
-            </p>
-            <p>
-              <strong className="text-gray-900">Email:</strong> <a href="mailto:technotecsystems@gmail.com" className="text-blue-600 hover:underline">technotecsystems@gmail.com</a> <br/>
-            </p>
-            <p>
-              <strong className="text-gray-900">Address:</strong><br />
-              No: 24/1, New No-57<br />
-              Seshachalam Street, Saidapet<br />
-              Chennai, 600015<br />
-              Tamil Nadu, India
-            </p>
-            <p>
-              <strong className="text-gray-900">Business Hours:</strong><br />
-              Monday - Friday: 9:00 AM - 6:00 PM<br />
-              Saturday: 9:00 AM - 5:00 PM<br />
-              Sunday: Closed
-            </p>
+      {/* Hero Section - Consistent with other pages */}
+      <motion.section
+        className="w-full py-12 md:py-16 bg-gradient-to-r from-primary-blue to-secondary-blue text-text-light text-center shadow-lg"
+        initial="hidden"
+        animate="visible"
+        variants={sectionVariants}
+      >
+        <div className="max-w-4xl mx-auto px-8 md:px-12">
+          <motion.h1 className="text-4xl md:text-5xl font-poppins font-bold leading-tight mb-4 text-white" variants={itemVariants}>
+            Get in Touch with Us
+          </motion.h1>
+          <motion.p className="text-xl md:text-2xl font-opensans opacity-90 mb-4" variants={itemVariants}>
+            Your Security is Our Priority
+          </motion.p>
+          <motion.p className="text-md md:text-lg font-opensans opacity-80" variants={itemVariants}>
+            Have a security need, a question about our services, or need a personalized quote? We're here to help.
+          </motion.p>
+        </div>
+      </motion.section>
+
+      {/* Contact Details & Form Section */}
+      <motion.section
+        className="w-full py-16 px-8 md:px-12 lg:px-16 bg-neutral-light text-center"
+        variants={sectionVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 text-left">
+          {/* Contact Information Section */}
+          <motion.div variants={itemVariants} className="bg-white p-8 rounded-xl shadow-xl border border-neutral-medium">
+            <h2 className="text-3xl font-poppins font-bold text-primary-blue mb-6">Contact Information</h2>
+            <div className="space-y-6 text-lg font-opensans text-text-dark">
+              <p className="flex items-center">
+                <FaPhone className="text-secondary-blue mr-3 text-2xl" />
+                <strong className="text-text-dark">Phone:</strong> <a href="tel:+9124336941" className="text-secondary-blue hover:underline ml-2">+91 24336941</a>
+              </p>
+              <p className="flex items-center">
+                <FaEnvelope className="text-secondary-blue mr-3 text-2xl" />
+                <strong className="text-text-dark">Email:</strong> <a href="mailto:technotecsystems@gmail.com" className="text-secondary-blue hover:underline ml-2">technotecsystems@gmail.com</a>
+              </p>
+              {/* FIXED: Changed <p> to <div> for address to resolve HTML nesting error */}
+              <div className="flex items-start">
+                <FaMapMarkerAlt className="text-secondary-blue mr-3 text-2xl mt-1" />
+                <div>
+                  <strong className="text-text-dark">Address:</strong><br />
+                  No: 24/1, New No-57<br />
+                  Seshachalam Street, Saidapet<br />
+                  Chennai, 600015<br />
+                  Tamil Nadu, India
+                </div>
+              </div>
+              {/* FIXED: Changed <p> to <div> for business hours to resolve HTML nesting error */}
+              <div className="flex items-start">
+                <FaClock className="text-secondary-blue mr-3 text-2xl mt-1" />
+                <div>
+                  <strong className="text-text-dark">Business Hours:</strong><br />
+                  Monday - Friday: 9:00 AM - 6:00 PM<br />
+                  Saturday: 9:00 AM - 5:00 PM<br />
+                  Sunday: Closed
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Contact Form Section */}
+          <motion.div variants={itemVariants} className="bg-white p-8 rounded-xl shadow-xl border border-neutral-medium">
+            <h2 className="text-3xl font-poppins font-bold text-primary-blue mb-6">Send Us a Message</h2>
+            <form className="space-y-5">
+              <div>
+                <label htmlFor="name" className="block text-text-dark text-sm font-bold mb-2">
+                  Your Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  className="w-full px-4 py-2 border rounded-md focus:ring-primary-blue focus:border-primary-blue"
+                  placeholder="Enter your name"
+                />
+              </div>
+              <div>
+                <label htmlFor="email" className="block text-text-dark text-sm font-bold mb-2">
+                  Your Email
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  className="w-full px-4 py-2 border rounded-md focus:ring-primary-blue focus:border-primary-blue"
+                  placeholder="Enter your email"
+                />
+              </div>
+              <div>
+                <label htmlFor="message" className="block text-text-dark text-sm font-bold mb-2">
+                  Your Message
+                </label>
+                <textarea
+                  id="message"
+                  rows={4}
+                  className="w-full px-4 py-2 border rounded-md focus:ring-primary-blue focus:border-primary-blue"
+                  placeholder="Enter your message"
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                className="w-full bg-secondary-blue text-text-light py-3 rounded-md hover:bg-primary-blue transition duration-300"
+              >
+                <FaPaperPlane className="inline-block mr-2" /> Send Message
+              </button>
+            </form>
+          </motion.div>
+        </div>
+
+        {/* Map Section - Now with Iframe */}
+        <motion.section
+          className="w-full py-16 px-8 md:px-12 lg:px-16 bg-primary-blue text-text-light text-center"
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          <div className="max-w-6xl mx-auto">
+            <motion.h2 className="text-4xl font-poppins font-bold text-white mb-8" variants={itemVariants}>
+              Find Us on the Map
+            </motion.h2>
+            <motion.div variants={itemVariants} className="relative w-full" style={containerStyle}>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.1872762027147!2d80.22332317610869!3d13.02374308729646!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a526705bb5cd673%3A0xf3586eeb545b8290!2sTechno%20Tec%20Systems!5e0!3m2!1sen!2sin!4v1748686354360!5m2!1sen!2sin" // Your provided iframe source
+                width="100%"
+                height="100%"
+                style={{ border: 0 }} // Ensure this is a JS object!
+                allowFullScreen={true}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Google Maps Location"
+              ></iframe>
+            </motion.div>
+            <motion.p variants={itemVariants} className="text-sm text-text-light mt-4 font-opensans">
+              Having trouble viewing the map? <a
+                href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.1872762027147!2d80.22332317610869!3d13.02374308729646!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a526705bb5cd673%3A0xf3586eeb545b8290!2sTechno%20Tec%20Systems!5e0!3m2!1sen!2sin!4v1748686354360!5m2!1sen!2sin" // Direct link using your iframe source
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-accent-light hover:underline font-bold"
+              >
+                Get directions on Google Maps directly.
+              </a>
+            </motion.p>
+            <motion.p variants={itemVariants} className="text-sm text-red-300 mt-2 font-opensans">
+              Please note: The map display might be affected if the source of the iframe changes or due to external factors with the embedded content.
+            </motion.p>
           </div>
-        </div>
+        </motion.section>
 
-        {/* Contact Form Section */}
-        <div className="bg-white p-8 rounded-lg shadow-xl">
-          <h2 className="text-3xl font-bold text-indigo-700 mb-6">Send Us a Message</h2>
-          <form className="space-y-5">
-            <div>
-              <label htmlFor="name" className="block text-gray-700 text-sm font-bold mb-2">Name:</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                className="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-blue-500"
-                placeholder="Your Name"
-              />
-            </div>
-            <div>
-              <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2">Email:</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                className="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-blue-500"
-                placeholder="your.email@example.com"
-              />
-            </div>
-            <div>
-              <label htmlFor="phone" className="block text-gray-700 text-sm font-bold mb-2">Phone (Optional):</label>
-              <input
-                type="tel"
-                id="phone"
-                name="phone"
-                className="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-blue-500"
-                placeholder="e.g., +91 9876543210"
-              />
-            </div>
-            <div>
-              <label htmlFor="message" className="block text-gray-700 text-sm font-bold mb-2">Message:</label>
-              <textarea
-                id="message"
-                name="message"
-                rows={5}
-                className="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-blue-500"
-                placeholder="Tell us about your security needs or ask a question."
-              ></textarea>
-            </div>
-            <button
-              type="submit"
-              className="bg-blue-700 hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-lg focus:outline-none focus:shadow-outline transition-colors duration-200"
-            >
-              Send Message
-            </button>
-          </form>
-        </div>
-      </div>
+      </motion.section>
 
-      {/* Google Maps Section */}
-      <div className="mt-16 text-center">
-        <h2 className="text-3xl font-bold text-indigo-700 mb-6">Find Us on the Map</h2>
-        <div className="rounded-lg shadow-md overflow-hidden" style={containerStyle}>
-          {renderMap()}
-        </div>
-        <p className="text-sm text-gray-500 mt-4">
-          **Please ensure you have entered a valid Google Maps API Key in the code for the map to load.**
-        </p>
-      </div>
+      {/* Call to Action Section - Consistent with other pages */}
+      <motion.div
+        className="py-8 md:py-12 text-center"
+        variants={sectionVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+      >
+              {/* FIXED: Changed to use MotionLink to resolve TypeScript error */}
+      <MotionLink
+        to="/services"
+        className="inline-block bg-primary-blue text-text-light py-3 px-8 rounded-md hover:bg-secondary-blue transition duration-300 font-opensans"
+        variants={itemVariants}
+      >
+        Explore Our Services
+      </MotionLink>
+      </motion.div>
     </div>
   );
 }

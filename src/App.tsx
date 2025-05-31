@@ -36,10 +36,10 @@ function App() {
       <div className="bg-accent-dark text-text-light text-sm py-2 px-4 md:px-8 flex flex-col sm:flex-row justify-between items-center z-50">
         <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 mb-1 sm:mb-0">
           <a href="tel:+919840050850" className="hover:text-accent-light transition-colors flex items-center">
-            <FaPhone className="mr-1 text-xs" /> +91 98400 50850
+            <FaPhone className="mr-1 text-xs" /> +91 24439641
           </a>
           <a href="mailto:info@technotecsystems.com" className="hover:text-accent-light transition-colors flex items-center">
-            <FaEnvelope className="mr-1 text-xs" /> info@technotecsystems.com
+            <FaEnvelope className="mr-1 text-xs" /> admin@technotecsys.in
           </a>
         </div>
         <div className="text-center sm:text-right">
