@@ -2,7 +2,7 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 // Icons for categorization and visual appeal
-import { FaBuilding, FaCity, FaPlaceOfWorship, FaHandshake } from 'react-icons/fa';
+import { FaBuilding, FaCity, FaPlaceOfWorship, FaHandshake } from 'react-icons/fa'; // Removed unused imports: FaGlobe, FaCertificate, FaTools, FaCheckCircle, FaLaptopHouse, FaHeadset, FaMapMarkedAlt
 
 export default function Projects() {
   // Framer Motion Variants for consistent animations
@@ -55,7 +55,7 @@ export default function Projects() {
     "Arulmigu Marundeeswarar Temple, Chennai",
     "Arulmigu Kapaleeswarar Temple, Chennai",
     "Sri Balathandayuthapani Temple, Chengalpattu",
-    "Sri Ranganathaswamy Temple, Srirangam", // <--- NEW TEMPLE ADDED HERE
+    "Sri Ranganathaswamy Temple, Srirangam",
   ];
 
   return (
@@ -87,7 +87,7 @@ export default function Projects() {
         variants={sectionVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
+        viewport={{ once: true, amount: 0 }}
       >
         <div className="max-w-6xl mx-auto">
           <motion.h2 className="text-4xl font-poppins font-bold text-secondary-blue mb-10" variants={itemVariants}>
@@ -97,7 +97,7 @@ export default function Projects() {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true, amount: 0 }}
             variants={{
               visible: { transition: { staggerChildren: 0.1 } }
             }}
@@ -119,20 +119,20 @@ export default function Projects() {
         variants={sectionVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
+        viewport={{ once: true, amount: 0 }}
       >
         <div className="max-w-6xl mx-auto">
           <motion.h2 className="text-4xl font-poppins font-bold text-white mb-10" variants={itemVariants}>
             <FaPlaceOfWorship className="inline-block text-5xl mb-2 mr-3 align-middle" /> Temples Across India
           </motion.h2>
           <motion.p className="text-xl font-opensans opacity-90 mb-8" variants={itemVariants}>
-            Proudly securing more than 1000+ Temples across India. Some of our key installations include:
+            Proudly securing **more than 1000+ Temples** across India. Some of our key installations include:
           </motion.p>
           <motion.div
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 bg-primary-blue/70 p-6 rounded-xl shadow-xl border border-accent-light"
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true, amount: 0 }}
             variants={{
               visible: { transition: { staggerChildren: 0.08 } }
             }}
@@ -155,7 +155,7 @@ export default function Projects() {
         variants={sectionVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
+        viewport={{ once: true, amount: 0 }}
       >
         <div className="max-w-6xl mx-auto">
           <motion.h2 className="text-4xl font-poppins font-bold text-secondary-blue mb-10" variants={itemVariants}>
@@ -165,7 +165,7 @@ export default function Projects() {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true, amount: 0 }}
             variants={{
               visible: { transition: { staggerChildren: 0.1 } }
             }}
@@ -187,7 +187,7 @@ export default function Projects() {
         variants={sectionVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
+        viewport={{ once: true, amount: 0 }}
       >
         <div className="max-w-3xl mx-auto">
           <motion.h2
