@@ -1,54 +1,58 @@
-# React + TypeScript + Vite
+# Techno Tec Systems Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive website for Techno Tec Systems, built with React, TypeScript, Vite, and Tailwind CSS.
 
-Currently, two official plugins are available:
+## About Techno Tec Systems
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Techno Tec Systems is a leading provider of advanced security and surveillance solutions in India, serving government, commercial, and religious institutions since 1999. The company is ISO 9001:2015 certified and has completed 1000+ installations across the country.
 
-## Expanding the ESLint configuration
+- **Mission:** Engineer and deliver state-of-the-art security and surveillance solutions that empower clients with safety, control, and peace of mind.
+- **Vision:** To be the undisputed leader in security technology, recognized for pioneering products, exceptional service, and a deep commitment to creating safer environments across India and beyond.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Features
+- Modern, mobile-friendly UI
+- Project and client showcase (temples, government, commercial)
+- About, Services, and Contact pages
+- Built with React, TypeScript, Vite, and Tailwind CSS
+- Animations with Framer Motion
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone <repo-url>
+   cd tts-port
+   ```
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+3. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
+4. Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+## Build for Production
+
+```bash
+npm run build
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Project Structure
+- `src/pages/` — Main pages (Home, AboutUs, Services, Projects, Contact)
+- `src/components/` — Shared UI components (Header, Navbar, Footer)
+- `src/assets/` — Static assets
+- `public/images/` — Company and product images
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Technologies Used
+- [React](https://react.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Vite](https://vitejs.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Framer Motion](https://www.framer.com/motion/)
+- [React Router](https://reactrouter.com/)
+- [React Icons](https://react-icons.github.io/react-icons/)
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## License
+This project is for Techno Tec Systems. All rights reserved.
