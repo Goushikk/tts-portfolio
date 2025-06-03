@@ -2,7 +2,7 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 // Icons for categorization and visual appeal
-import { FaBuilding, FaCity, FaPlaceOfWorship, FaHandshake } from 'react-icons/fa'; // Removed unused imports: FaGlobe, FaCertificate, FaTools, FaCheckCircle, FaLaptopHouse, FaHeadset, FaMapMarkedAlt
+import { FaBuilding, FaCity, FaPlaceOfWorship } from 'react-icons/fa'; // Removed unused imports: FaGlobe, FaCertificate, FaTools, FaCheckCircle, FaLaptopHouse, FaHeadset, FaMapMarkedAlt
 
 export default function Projects() {
   // Framer Motion Variants for consistent animations
