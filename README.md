@@ -55,4 +55,4 @@ npm run build
 - [React Icons](https://react-icons.github.io/react-icons/)
 
 ## License
-This project is for Techno Tec Systems. All rights reserved.
+This project is for Techno Tec Systems. All rights reserved - 2025.
